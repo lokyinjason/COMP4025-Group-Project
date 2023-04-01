@@ -19,9 +19,14 @@ public class FlashLightSystem : MonoBehaviour
 
     private void Update()
     {
-        DecreaseLightAngle();
-        DecreaseLightIntensity();
         batteryLoss();
+        if(batteryLife < 50f){
+            DecreaseLightAngle();
+            DecreaseLightIntensity();
+        } else {
+            flashlight.spotAngle = 35f;
+            flashlight.intensity = 1.25f;
+        }
     }
 
     private void DecreaseLightAngle()
@@ -55,6 +60,7 @@ public class FlashLightSystem : MonoBehaviour
 
     public void RechargeBattery(float rechargeAmount)
     {
+        Debug.Log("Battery Recharged by " + rechargeAmount );
         batteryLife += rechargeAmount;
     }
 }
