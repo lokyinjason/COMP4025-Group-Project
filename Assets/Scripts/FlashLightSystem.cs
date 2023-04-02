@@ -55,13 +55,10 @@ public class FlashLightSystem : MonoBehaviour
     private void DecreaseLightAngle()
     {
         if (flashlight.spotAngle <= minimumAngle)
-        {
             return;
-        }
+    
         else
-        {
             flashlight.spotAngle -= angleDecay * Time.deltaTime;
-        }
     }
 
     private void DecreaseLightIntensity()
@@ -76,9 +73,7 @@ public class FlashLightSystem : MonoBehaviour
             batteryLife -= batteryDrain * Time.deltaTime; // Drain the battery over time
         }
         else
-        {
-            flashlight.enabled = false; // Disable the light component
-        }
+            flashlight.enabled = false; // Disable the light component}
     }
 
     public void RechargeBattery(float rechargeAmount)
