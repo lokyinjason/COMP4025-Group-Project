@@ -9,7 +9,8 @@ public class FlashLightSystem : MonoBehaviour
     [SerializeField] float minimumAngle = 40f;
     [SerializeField] private float batteryLife = 100f; // The battery life of the flashlight
     [SerializeField] private float batteryDrain = 1f; // The amount of battery drained per second
-    
+    [SerializeField] private float gameOverTimer = 30f;
+
     Light flashlight;
 
     private void Start()
@@ -20,13 +21,35 @@ public class FlashLightSystem : MonoBehaviour
     private void Update()
     {
         batteryLoss();
+        
         if(batteryLife < 50f){
             DecreaseLightAngle();
             DecreaseLightIntensity();
-        } else {
+        } 
+        
+        if (batteryLife >= 50f) {
             flashlight.spotAngle = 35f;
             flashlight.intensity = 1.25f;
         }
+        
+        if (batteryLife < 0) {
+            // Start a timer to count 30 seconds
+            // When the timer is done, call the HandleGameOver() method from the GameOverHandler.cs script
+            StartCoroutine(GameOverTimer());
+        }
+    }
+
+    private IEnumerator GameOverTimer()
+    {
+        yield return new WaitForSeconds(gameOverTimer);
+        // Get a reference to the parent object of the flashlight, which should be the player object
+        GameObject playerObject = transform.parent.gameObject;
+
+        // Get a reference to the GameOverHandler component on the player object
+        GameOverHandler gameOverHandler = playerObject.GetComponent<GameOverHandler>();
+
+        // Call the HandleGameOver method on the GameOverHandler component
+        gameOverHandler.HandleGameOver();
     }
 
     private void DecreaseLightAngle()
