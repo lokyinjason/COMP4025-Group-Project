@@ -1612,10 +1612,10 @@ MonoBehaviour:
   lightDecay: 0.5
   angleDecay: 1
   minimumAngle: 40
-  batteryLife: 250
+  batteryLife: 120
   batteryDrain: 1
   gameOverTimer: 5
-  rechargeAmount: 500
+  rechargeAmount: 100
 --- !u!1001 &1721287382
 PrefabInstance:
   m_ObjectHideFlags: 0

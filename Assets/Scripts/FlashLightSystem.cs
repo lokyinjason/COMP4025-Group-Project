@@ -45,8 +45,8 @@ public class FlashLightSystem : MonoBehaviour
     private IEnumerator GameOverTimer()
     {
         yield return new WaitForSeconds(gameOverTimer);
-        // Get a reference to the parent object of the flashlight, which should be the player object
-        GameObject playerObject = transform.parent.gameObject;
+        // Get a reference to find the player object with a player tag
+        GameObject playerObject = GameObject.FindWithTag("Player");
 
         // Get a reference to the GameOverHandler component on the player object
         GameOverHandler gameOverHandler = playerObject.GetComponent<GameOverHandler>();
@@ -86,7 +86,7 @@ public class FlashLightSystem : MonoBehaviour
         batteryLife += rechargeAmount;
     }
 
-    [SerializeField] float rechargeAmount = 500f; // The amount of battery life the battery provides when picked up
+    [SerializeField] float rechargeAmount = 240f; // The amount of battery life the battery provides when picked up
 
     void OnTriggerEnter(Collider other)
     {
