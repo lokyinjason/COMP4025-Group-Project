@@ -8,8 +8,11 @@ public class FlashLightSystem : MonoBehaviour
     [SerializeField] float angleDecay = 1f;
     [SerializeField] float minimumAngle = 40f;
     [SerializeField] private float batteryLife = 100f; // The battery life of the flashlight
+    [SerializeField] private float maxBatteryLife = 100f; // The battery life of the flashlight
     [SerializeField] private float batteryDrain = 1f; // The amount of battery drained per second
     [SerializeField] private float gameOverTimer = 30f;
+    [SerializeField] private float normalAngle = 35f;
+    [SerializeField] private float normalIntensity = 1.25f;
 
     Light flashlight;
 
@@ -30,8 +33,8 @@ public class FlashLightSystem : MonoBehaviour
 
         if (batteryLife >= 50f)
         {
-            flashlight.spotAngle = 35f;
-            flashlight.intensity = 1.25f;
+            flashlight.spotAngle = normalAngle;
+            flashlight.intensity = normalIntensity;
         }
 
         if (batteryLife < 0)
@@ -84,6 +87,7 @@ public class FlashLightSystem : MonoBehaviour
     {
         Debug.Log("Battery Recharged by " + rechargeAmount);
         batteryLife += rechargeAmount;
+        if (batteryLife > maxBatteryLife) batteryLife = 100f;
     }
 
     [SerializeField] float rechargeAmount = 240f; // The amount of battery life the battery provides when picked up
