@@ -217,9 +217,9 @@ MonoBehaviour:
   lightDecay: 0.025
   angleDecay: 1.25
   minimumAngle: 0
-  batteryLife: 51
+  batteryLife: 100
   maxBatteryLife: 100
-  batteryDrain: 2.5
+  batteryDrain: 2
   gameOverTimer: 5
   normalAngle: 25
   normalIntensity: 0.5
