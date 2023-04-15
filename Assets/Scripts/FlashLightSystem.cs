@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class FlashLightSystem : MonoBehaviour
 {
-    [SerializeField] float lightDecay = .1f;
-    [SerializeField] float angleDecay = 1f;
-    [SerializeField] float minimumAngle = 40f;
     [SerializeField] private float batteryLife = 100f; // The battery life of the flashlight
     [SerializeField] private float maxBatteryLife = 100f; // The battery life of the flashlight
     [SerializeField] private float batteryDrain = 1f; // The amount of battery drained per second
-    [SerializeField] private float gameOverTimer = 30f;
-    [SerializeField] private float normalAngle = 35f;
-    [SerializeField] private float normalIntensity = 1.25f;
+    [SerializeField] private float maxAngle = 180f;
+    [SerializeField] private float maxIntensity = 1f;
+    [SerializeField] float minAngle = 40f;
+    [SerializeField] private float minIntensity = 0.05f;
+    [SerializeField] private float startFallOff = 75f;
+    [SerializeField] private float endFallOff = 0f;
+    [SerializeField] private float gameOverTimer = 5f;
+    private float normalize; // normalize = (batteryLife - endFallOff) / (startFallOff - endFallOff);
 
     Light flashlight;
 
@@ -23,25 +25,33 @@ public class FlashLightSystem : MonoBehaviour
 
     private void Update()
     {
-        batteryLoss();
-
-        if (batteryLife < 50f)
-        {
-            DecreaseLightAngle();
-            DecreaseLightIntensity();
+        if (batteryLife > 0){
+            batteryLoss();
         }
-
-        if (batteryLife >= 50f)
+        
+        if (batteryLife >= startFallOff)
         {
-            flashlight.spotAngle = normalAngle;
-            flashlight.intensity = normalIntensity;
+            flashlight.spotAngle = maxAngle;
+            flashlight.intensity = maxIntensity;
         }
-
-        if (batteryLife < 0)
+        else if (batteryLife <= 0)
         {
             // Start a timer to count 30 seconds
             // When the timer is done, call the HandleGameOver() method from the GameOverHandler.cs script
+            flashlight.spotAngle = 0;
+            flashlight.intensity = 0;
+            batteryLife = 0;
             StartCoroutine(GameOverTimer());
+        }
+        else if (batteryLife < endFallOff)
+        {
+            flashlight.spotAngle = minAngle;
+            flashlight.intensity = minIntensity;
+        }
+        else {
+            normalize = (batteryLife - endFallOff) / (startFallOff - endFallOff);
+            flashlight.spotAngle = normalize * maxAngle + (1f - normalize) * minAngle;
+            flashlight.intensity = normalize * maxIntensity + (1f - normalize) * minIntensity;
         }
     }
 
@@ -58,19 +68,19 @@ public class FlashLightSystem : MonoBehaviour
         gameOverHandler.HandleGameOver();
     }
 
-    private void DecreaseLightAngle()
-    {
-        if (flashlight.spotAngle <= minimumAngle)
-            return;
+    // private void DecreaseLightAngle()
+    // {
+    //     if (flashlight.spotAngle <= minimumAngle)
+    //         return;
 
-        else
-            flashlight.spotAngle -= angleDecay * Time.deltaTime;
-    }
+    //     else
+    //         flashlight.spotAngle -= angleDecay * Time.deltaTime;
+    // }
 
-    private void DecreaseLightIntensity()
-    {
-        flashlight.intensity -= lightDecay * Time.deltaTime;
-    }
+    // private void DecreaseLightIntensity()
+    // {
+    //     flashlight.intensity -= lightDecay * Time.deltaTime;
+    // }
 
     private void batteryLoss()
     {
@@ -90,7 +100,7 @@ public class FlashLightSystem : MonoBehaviour
         if (batteryLife > maxBatteryLife) batteryLife = 100f;
     }
 
-    [SerializeField] float rechargeAmount = 240f; // The amount of battery life the battery provides when picked up
+    [SerializeField] float rechargeAmount = 100f; // The amount of battery life the battery provides when picked up
 
     void OnTriggerEnter(Collider other)
     {
