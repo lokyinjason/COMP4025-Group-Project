@@ -18,9 +18,6 @@ public class DoorsWithLock : MonoBehaviour
     public bool hasKey;
 
 
-
-
-
     void Start()
     {
         inReach = false;
@@ -89,8 +86,8 @@ public class DoorsWithLock : MonoBehaviour
     {
         if (unlocked)
         {
-            door.SetBool("Open", true);
-            door.SetBool("Closed", false);
+            door.SetBool("isOpen_Obj_1", true);
+            door.SetBool("isClose_Obj_1", false);
             doorSound.Play();
         }
 
@@ -100,8 +97,8 @@ public class DoorsWithLock : MonoBehaviour
     {
         if (unlocked)
         {
-            door.SetBool("Open", false);
-            door.SetBool("Closed", true);
+            door.SetBool("isOpen_Obj_1", false);
+            door.SetBool("isClose_Obj_1", true);
         }
 
     }
