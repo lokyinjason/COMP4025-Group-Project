@@ -6,6 +6,7 @@ TagManager:
   tags:
   - FlashLight
   - Battery
+  - Reach
   layers:
   - Default
   - TransparentFX

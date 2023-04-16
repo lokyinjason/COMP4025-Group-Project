@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,7 +8,6 @@ public class Doors : MonoBehaviour
     public GameObject openText;
 
     public AudioSource doorSound;
-
 
     public bool inReach;
 
@@ -49,13 +48,16 @@ public class Doors : MonoBehaviour
 
         if (inReach && Input.GetButtonDown("Interact"))
         {
-            DoorOpens();
+            if (door.GetBool("isClose_Obj_1"))
+            {
+                DoorOpens();
+            }
+            else 
+            {
+                DoorCloses();
+            }
         }
 
-        else
-        {
-            DoorCloses();
-        }
 
 
 
@@ -67,6 +69,8 @@ public class Doors : MonoBehaviour
         // door.SetBool("Open", true);
         // door.SetBool("Closed", false);
         door.SetBool("isOpen_Obj_1", true);
+        door.SetBool("isClose_Obj_1", false);
+
         doorSound.Play();
 
     }
@@ -75,6 +79,8 @@ public class Doors : MonoBehaviour
     {
         Debug.Log("It Closes");
         door.SetBool("isOpen_Obj_1", false);
+        door.SetBool("isClose_Obj_1", true);
+
         // door.SetBool("Closed", true);
     }
 
