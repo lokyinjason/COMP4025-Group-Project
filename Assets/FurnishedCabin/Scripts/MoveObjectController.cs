@@ -48,7 +48,8 @@ public class MoveObjectController : MonoBehaviour
 		if (other.gameObject == player)		//player has collided with trigger
 		{			
 			playerEntered = true;
-
+			// Print debug line 
+			Debug.Log("Player entered triggered moveable object.");
 		}
 	}
 
@@ -93,6 +94,7 @@ public class MoveObjectController : MonoBehaviour
 
 					if (Input.GetKeyUp(KeyCode.E) || Input.GetButtonDown("Fire1"))
 					{
+						Debug.Log("Player pressed E or Fire1");
 						anim.enabled = true;
 						anim.SetBool(animBoolNameNum,!isOpen);
 						msg = getGuiMsg(!isOpen);
