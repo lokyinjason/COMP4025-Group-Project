@@ -7,7 +7,8 @@ public class Doors : MonoBehaviour
     public Animator door;
     public GameObject openText;
 
-    public AudioSource doorSound;
+    public AudioSource openDoorSound;
+    public AudioSource closeDoorSound;
 
     public bool inReach;
 
@@ -71,7 +72,7 @@ public class Doors : MonoBehaviour
         door.SetBool("isOpen_Obj_1", true);
         door.SetBool("isClose_Obj_1", false);
 
-        doorSound.Play();
+        openDoorSound.Play();
 
     }
 
@@ -80,6 +81,8 @@ public class Doors : MonoBehaviour
         Debug.Log("It Closes");
         door.SetBool("isOpen_Obj_1", false);
         door.SetBool("isClose_Obj_1", true);
+
+        closeDoorSound.Play();
 
         // door.SetBool("Closed", true);
     }
