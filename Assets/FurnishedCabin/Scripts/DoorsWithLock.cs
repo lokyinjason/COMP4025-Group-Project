@@ -54,28 +54,26 @@ public class DoorsWithLock : MonoBehaviour
         {
             locked = false;
             hasKey = true;
-        }  
-        
-        else
-        {
+        } else {
             hasKey = false;
         }
 
         if (hasKey && inReach && Input.GetButtonDown("Interact"))
         {
             unlocked = true;
-            DoorOpens();
-        }
-
-        else
-        {
-            DoorCloses();
+            if (door.GetBool("isClose_Obj_1"))
+            {
+                DoorOpens();
+            }
+            else 
+            {
+                DoorCloses();
+            }
         }
 
         if (locked && inReach && Input.GetButtonDown("Interact"))
         {
             lockedSound.Play();
-            
         }
 
 
