@@ -15,7 +15,6 @@ public class TVFlickeringLight : MonoBehaviour
 
     void Start()
     {
-        ptLight = GetComponent<Light>();
         emissionToggle = GetComponent<MeshRenderer>();
         StartCoroutine(OnTimer());
     }
@@ -27,10 +26,14 @@ public class TVFlickeringLight : MonoBehaviour
 
     private IEnumerator OffTimer()
     {
-        Debug.Log("Waiting to off");
+        // Debug.Log("Waiting to off");
         randomOffTimer = Random.Range(0, maxOff);
         yield return new WaitForSeconds(randomOffTimer);
         ptLight.intensity = 0f;
+        
+        // Turn off the MeshRenderer texture 
+        emissionToggle.enabled=false;
+
         emissionToggle.materials[0].DisableKeyword("_EMISSION");
         yield return new WaitForSeconds(0.1f); // Wait for 0.1 seconds before calling OnTimer
         StartCoroutine(OnTimer());
@@ -38,10 +41,13 @@ public class TVFlickeringLight : MonoBehaviour
 
     private IEnumerator OnTimer()
     {
-        Debug.Log("Waiting to on");
+        // Debug.Log("Waiting to on");
         randomOnTimer = Random.Range(0, maxOn);
         yield return new WaitForSeconds(randomOnTimer);
+        
         ptLight.intensity = onIntensity;
+        emissionToggle.enabled=true;
+
         emissionToggle.materials[0].EnableKeyword("_EMISSION");
         yield return new WaitForSeconds(0.1f); // Wait for 0.1 seconds before calling OffTimer
         StartCoroutine(OffTimer());

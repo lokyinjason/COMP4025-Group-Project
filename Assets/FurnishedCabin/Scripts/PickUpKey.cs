@@ -22,8 +22,11 @@ public class PickUpKey : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("In Trigger Collision");
+
         if (other.gameObject.tag == "Reach")
         {
+            Debug.Log("In Reach Trigger Collision");
             inReach = true;
             pickUpText.SetActive(true);
 

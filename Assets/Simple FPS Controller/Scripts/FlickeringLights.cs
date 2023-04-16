@@ -28,7 +28,7 @@ public class FlickeringLights : MonoBehaviour
     }
     private IEnumerator OffTimer()
     {
-        Debug.Log("Waiting to off");
+        // Debug.Log("Waiting to off");
         // Randomize how long to wait.
         randomOffTimer = Random.Range(0, maxOff);
         // Wait and turn it off.
@@ -42,7 +42,7 @@ public class FlickeringLights : MonoBehaviour
 
     private IEnumerator OnTimer()
     {
-        Debug.Log("Waiting to on");
+        // Debug.Log("Waiting to on");
         // Set how long until turning it on.
         randomOnTimer = Random.Range(0, maxOn);
         // Wait and turn it on.

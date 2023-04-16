@@ -6,9 +6,9 @@ public class Character : MonoBehaviour
 {
     [SerializeField] FlashLightSystem flashlight;
     [SerializeField] float rechargeAmount = 500f; // The amount of battery life the battery provides when picked up
-
+    
     // Add a public parameter of the sound effect to play when the battery is picked up
-    [SerializeField] AudioClip batteryPickupSFX;
+    [SerializeField] AudioSource batteryPickupSFX;
 
     void OnTriggerEnter(Collider other)
     {
