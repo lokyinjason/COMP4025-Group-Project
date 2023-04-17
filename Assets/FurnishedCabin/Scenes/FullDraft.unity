@@ -1448,7 +1448,7 @@ MonoBehaviour:
   importCrossingPresetsAlert: 0
   importSidewalkPresetsAlert: 0
   updateSideObjectsAlert: 0
-  updateRoadPresetsAlert: 0
+  updateRoadPresetsAlert: 1
   updateCrossingPresetsAlert: 0
   updateSidewalkPresetsAlert: 0
   waypointDistance: 10
@@ -1495,7 +1495,7 @@ MonoBehaviour:
   newRoadFlag: 0
   roadTypeUpdateFlag: 1
   roadUpdateDragFlag: 0
-  mouseDragFlag: 1
+  mouseDragFlag: 0
   roadScripts: []
   prefabScripts: []
   globalGridActive: 0
