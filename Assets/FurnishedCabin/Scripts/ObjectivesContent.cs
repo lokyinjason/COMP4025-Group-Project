@@ -5,12 +5,12 @@ using TMPro;
 
 public class ObjectivesContent : MonoBehaviour
 {
-    private TextMeshPro content;
+    private TextMeshProUGUI content;
 
     // Start is called before the first frame update
     void Start()
     {
-        content = GetComponent<TextMeshPro>();
+        content = GetComponent<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
