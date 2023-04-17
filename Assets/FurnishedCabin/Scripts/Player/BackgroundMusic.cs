@@ -41,4 +41,9 @@ public class BackgroundMusic : MonoBehaviour
             bgm.Play();
         }
     }
+
+    public void stopBGM()
+    {
+        m_Play = false;
+    }
 }
