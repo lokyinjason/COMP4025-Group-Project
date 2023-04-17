@@ -112,4 +112,9 @@ public class FlashLightSystem : MonoBehaviour
             Destroy(other.gameObject); // Destroy the battery object
         }
     }
+
+    public float getBatteryLifeRemain()
+    {
+        return (batteryLife / maxBatteryLife) * 100;
+    }
 }
