@@ -10,6 +10,9 @@ public class Character : MonoBehaviour
     // Add a public parameter of the sound effect to play when the battery is picked up
     [SerializeField] AudioSource batteryPickupSFX;
 
+    [SerializeField] BackgroundMusic bgMusic;
+    
+
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger");
@@ -18,6 +21,16 @@ public class Character : MonoBehaviour
             Debug.Log("Battery Recharged ");
             flashlight.RechargeBattery(rechargeAmount); // Recharge the battery of the flashlight
             Destroy(other.gameObject); // Destroy the battery object
+
+        }
+        else if (other.tag == "Toilet") // if the player enter toilet
+        {
+            Debug.Log("entered toilet");
+            bgMusic.changeBGM(bgMusic.toiletMusic);
+        }
+        else if (other.tag == "LivingRoom") // if the player enter toilet
+        {
+            bgMusic.changeBGM(bgMusic.livingrmMusic);
         }
     }
 

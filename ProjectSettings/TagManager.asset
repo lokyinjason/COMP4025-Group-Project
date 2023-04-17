@@ -8,6 +8,8 @@ TagManager:
   - Battery
   - Reach
   - Key
+  - Toilet
+  - LivingRoom
   layers:
   - Default
   - TransparentFX
