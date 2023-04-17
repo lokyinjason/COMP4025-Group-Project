@@ -11,7 +11,6 @@ public class Character : MonoBehaviour
     [SerializeField] AudioSource batteryPickupSFX;
 
     [SerializeField] BackgroundMusic bgMusic;
-    
 
     void OnTriggerEnter(Collider other)
     {
@@ -32,6 +31,19 @@ public class Character : MonoBehaviour
         {
             bgMusic.changeBGM(bgMusic.livingrmMusic);
         }
+        else if (other.tag == "Enemy") // if the player touch enemy
+        {
+            Rigidbody rigidBody = GetComponent<Rigidbody>();
+            rigidBody.constraints = RigidbodyConstraints.FreezePosition;
+            StartCoroutine(death());
+        }
+    }
+
+    IEnumerator death() {
+        yield return new WaitForSeconds(3.75f);
+        
+        GameOverHandler gameOverHandler = GetComponent<GameOverHandler>();
+        gameOverHandler.HandleGameOver();
     }
 
 }
