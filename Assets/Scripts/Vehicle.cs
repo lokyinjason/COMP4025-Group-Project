@@ -7,6 +7,7 @@ public class Vehicle : MonoBehaviour
     public GameObject openText;
     public AudioSource failIgnitionSound;
     public AudioSource startIgnitionSound;
+    public GameObject fuelINV;
     
     public bool inReach;
     public bool hasFuel;
@@ -14,6 +15,7 @@ public class Vehicle : MonoBehaviour
     void Start()
     {
         inReach = false;
+        hasFuel = false;
     }
 
     void OnTriggerEnter(Collider other)
@@ -38,6 +40,13 @@ public class Vehicle : MonoBehaviour
 
     void Update()
     {
+        if(fuelINV.activeInHierarchy)
+        {
+            // locked = false;
+            hasFuel = true;
+        } else {
+            hasFuel = false;
+        }
 
         if (inReach && Input.GetButtonDown("Interact"))
         {
