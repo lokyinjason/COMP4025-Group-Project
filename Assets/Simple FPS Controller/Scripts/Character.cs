@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
         {
             Debug.Log("Battery Recharged ");
             flashlight.RechargeBattery(rechargeAmount); // Recharge the battery of the flashlight
+            batteryPickupSFX.Play(); // Play the battery pickup sound effect
             Destroy(other.gameObject); // Destroy the battery object
 
         }
