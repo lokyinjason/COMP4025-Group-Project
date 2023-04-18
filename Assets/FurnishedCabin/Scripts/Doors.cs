@@ -12,9 +12,6 @@ public class Doors : MonoBehaviour
 
     public bool inReach;
 
-
-
-
     void Start()
     {
         inReach = false;
@@ -58,12 +55,8 @@ public class Doors : MonoBehaviour
                 DoorCloses();
             }
         }
-
-
-
-
-
     }
+
     void DoorOpens ()
     {
         Debug.Log("It Opens");
