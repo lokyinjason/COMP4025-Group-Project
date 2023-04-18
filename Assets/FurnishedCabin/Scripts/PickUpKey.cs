@@ -6,12 +6,12 @@ public class PickUpKey : MonoBehaviour
 {
     public GameObject keyOB;
     public GameObject invOB;
-    public GameObject pickUpText;
+    [SerializeField] GameObject pickUpText;
     public AudioSource keySound;
 
     public bool inReach;
 
-    [SerializeField] ObjectivesContent obj;
+    // [SerializeField] ObjectivesContent obj;
 
 
     void Start()
@@ -54,7 +54,7 @@ public class PickUpKey : MonoBehaviour
             keySound.Play();
             invOB.SetActive(true);
             pickUpText.SetActive(false);
-            obj.setContent("next");
+            // obj.setContent("next");
         }
 
         
