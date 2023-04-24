@@ -51,9 +51,6 @@ public class DoorsWithLock : MonoBehaviour
     }
 
 
-
-
-
     void Update()
     {
         if(KeyINV.activeInHierarchy)

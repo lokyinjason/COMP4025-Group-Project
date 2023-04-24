@@ -8,19 +8,29 @@ public class LightsOutPuzzle : MonoBehaviour
     private bool[] lightStates;
     private int gridSize = 3; // change this to adjust the size of the grid
     private bool solved = false;
-    public AudioSource correctSound;
+    // public AudioSource correctSound;
+
+    public GameObject keyOB;
+    // public GameObject invOB;
+    public AudioSource keySound;
+
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   
+        // invOB.SetActive(false);
+        keyOB.SetActive(false);
+
         int numLights = gridSize * gridSize;
         lightStates = new bool[numLights];
 
         // Set up light states
         int numOn = 4; // change this to adjust the number of lights that start on
+
         for (int i = 0; i < numOn; i++)
         {
             int index = Random.Range(0, numLights);
+
             if (!lightStates[index])
             {
                 ToggleLights(index);
@@ -43,15 +53,22 @@ public class LightsOutPuzzle : MonoBehaviour
             {
                 Debug.Log("Puzzle solved!");
                 solved = true;
-                correctSound.Play();
+                // correctSound.Play();
+
+                keyOB.SetActive(true);
+                keySound.Play();
+                // invOB.SetActive(true);
+
             }
         }
     }
+
     private void ToggleLights(int index)
     {
         if (!solved)
         {
             Debug.Log("Doing light");
+
             int x = index % gridSize;
             int y = index / gridSize;
 
@@ -59,6 +76,7 @@ public class LightsOutPuzzle : MonoBehaviour
             lightStates[index] = !lightStates[index];
             lights[index].GetComponent<Light>().color = lightStates[index] ? Color.red : Color.green;
             MeshRenderer emissionToggle = lights[index].GetComponent<MeshRenderer>();
+
             if (lightStates[index]) emissionToggle.materials[0].SetColor("_EmissionColor", Color.red);
             else emissionToggle.materials[0].SetColor("_EmissionColor", Color.green);
             //emissionToggle.materials[0].DisableKeyword("_EMISSION");

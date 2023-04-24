@@ -74,10 +74,7 @@ public class FuseBox : MonoBehaviour
             if (fuseBox.GetBool("isClose_Obj_1"))
             {
                 BoxOpens();
-            }
-            else 
-            {
-                BoxCloses();
+                openText.SetActive(false);
             }
         }
 
@@ -112,11 +109,11 @@ public class FuseBox : MonoBehaviour
 
     void BoxCloses()
     {
-        Debug.Log("It Closes");
-        fuseBox.SetBool("isOpen_Obj_1", false);
-        fuseBox.SetBool("isClose_Obj_1", true);
+        // Debug.Log("It Closes");
+        // fuseBox.SetBool("isOpen_Obj_1", false);
+        // fuseBox.SetBool("isClose_Obj_1", true);
 
-        closeBoxSound.Play();
+        // closeBoxSound.Play();
 
         // door.SetBool("Closed", true);
     }
