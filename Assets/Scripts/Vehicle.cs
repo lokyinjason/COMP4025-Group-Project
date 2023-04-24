@@ -54,11 +54,20 @@ public class Vehicle : MonoBehaviour
             {
                 Debug.Log("Starting Vehicle");
                 startIgnitionSound.Play();
+
+                StartCoroutine(death());
             } else {
                 Debug.Log("No Fuel");
                 failIgnitionSound.Play();
             }
         }
+    }
+
+    IEnumerator death() {
+        yield return new WaitForSeconds(2f);
+        
+        GameOverHandler gameOverHandler = GetComponent<GameOverHandler>();
+        gameOverHandler.HandleGameOver();
     }
 
 
