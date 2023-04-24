@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/#NVJOB Slender/Example/Scene/Example.unity
+    path: Assets/#NVJOB Slender/Example/Scene/Main.unity
     guid: 810bd709cb3740f1b178a3210c8bb8ed
   - enabled: 0
     path: Assets/FurnishedCabin/Scenes/Jason.unity
