@@ -5,11 +5,13 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     [SerializeField] Transform pos;
+    [SerializeField] Vector3 addZ = new Vector3(0, 0, 2);
     // Start is called before the first frame update
     void Start()
     {
         // this.transform.position = pos.position;
         this.transform.rotation = pos.rotation;
+        this.transform.position = pos.position;
     }
 
     // Update is called once per frame
@@ -17,5 +19,6 @@ public class FollowCamera : MonoBehaviour
     {
         // this.transform.position = pos.position;
         this.transform.rotation = pos.rotation;
+        this.transform.position = pos.position + addZ;
     }
 }
