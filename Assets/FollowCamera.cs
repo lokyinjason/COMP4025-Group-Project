@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowCamera : MonoBehaviour
 {
     [SerializeField] Transform pos;
-    [SerializeField] Vector3 addZ = new Vector3(0, 0, 2);
+    [SerializeField] Vector3 addZ = new Vector3(0, 0, 0);
     // Start is called before the first frame update
     void Start()
     {

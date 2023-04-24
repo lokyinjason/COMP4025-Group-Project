@@ -18,9 +18,6 @@ public class EnemyAI : MonoBehaviour
     bool kill = false;
     void Start()
     {
-        AudioSource startbgm = GetComponent<AudioSource>();
-        startbgm.Play();
-        Debug.Log(startbgm.isPlaying);
         navMeshAgent = GetComponent<NavMeshAgent>();
         origin = transform.position;
     }
@@ -69,6 +66,7 @@ public class EnemyAI : MonoBehaviour
         AudioSource bgm = GetComponent<AudioSource>();
         bgm.Stop();
         killSound.Play();
+        Debug.Log(killSound.isPlaying);
         killCamera.SetActive(true);
         mainCamera.SetActive(false);
         lighting.SetActive(true);
