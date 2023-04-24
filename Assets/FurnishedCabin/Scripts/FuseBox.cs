@@ -17,12 +17,18 @@ public class FuseBox : MonoBehaviour
     public bool locked;
     public bool hasKey;
 
+    public bool firstLock;
+    public bool firstOpen;
+    [SerializeField] ObjectivesContent obj;
+
     void Start()
     {
         inReach = false;
         hasKey = false;
         unlocked = false;
         locked = true;
+        firstLock = true;
+        firstOpen = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -59,6 +65,12 @@ public class FuseBox : MonoBehaviour
 
         if (hasKey && inReach && Input.GetButtonDown("Interact"))
         {
+            if (firstOpen)
+            {
+                obj.removeContent("Use the key to unlock something. ");
+                obj.removeContent("Find the key to open the fuse box. ");
+                firstOpen = false;
+            }
             if (fuseBox.GetBool("isClose_Obj_1"))
             {
                 BoxOpens();
@@ -72,6 +84,12 @@ public class FuseBox : MonoBehaviour
         if (locked && inReach && Input.GetButtonDown("Interact"))
         {
             lockedSound.Play();
+
+            if (firstLock)
+            {
+                obj.setContent("Find the key to open the fuse box. ");
+            }
+            firstLock = false;
         }
 
 

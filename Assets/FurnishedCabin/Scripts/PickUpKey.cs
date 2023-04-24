@@ -11,7 +11,7 @@ public class PickUpKey : MonoBehaviour
 
     public bool inReach;
 
-    // [SerializeField] ObjectivesContent obj;
+    [SerializeField] ObjectivesContent obj;
 
 
     void Start()
@@ -55,6 +55,8 @@ public class PickUpKey : MonoBehaviour
             invOB.SetActive(true);
             pickUpText.SetActive(false);
             // obj.setContent("next");
+
+            obj.setContent("Use the key to unlock something. ");
         }
 
         

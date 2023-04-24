@@ -54,7 +54,9 @@ public class PickUpFuel : MonoBehaviour
             pickUpSound.Play();
             invFuelOB.SetActive(true);
             pickUpText.SetActive(false);
-            // obj.setContent("next");
+            obj.removeContent("Find the gasoline. ");
+            obj.setContent("Go to the car. ");
+
         }
 
         

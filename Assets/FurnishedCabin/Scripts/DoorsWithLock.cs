@@ -17,6 +17,10 @@ public class DoorsWithLock : MonoBehaviour
     public bool locked;
     public bool hasKey;
 
+    public bool firstLock;
+    public bool firstOpen;
+    [SerializeField] ObjectivesContent obj;
+
 
     void Start()
     {
@@ -24,6 +28,8 @@ public class DoorsWithLock : MonoBehaviour
         hasKey = false;
         unlocked = false;
         locked = true;
+        firstLock = true;
+        firstOpen = true;
     }
 
     void OnTriggerEnter(Collider other)
@@ -74,6 +80,11 @@ public class DoorsWithLock : MonoBehaviour
         if (locked && inReach && Input.GetButtonDown("Interact"))
         {
             lockedSound.Play();
+            if (firstLock)
+            {
+                obj.setContent("Find the key to open the door. ");
+            }
+            firstLock = false;
         }
 
 
@@ -87,6 +98,12 @@ public class DoorsWithLock : MonoBehaviour
             door.SetBool("isOpen_Obj_1", true);
             door.SetBool("isClose_Obj_1", false);
             doorSound.Play();
+            if (firstOpen)
+            {
+                obj.removeContent("Use the key to unlock something. ");
+                obj.removeContent("Find the key to open the door. ");
+            }
+            firstOpen = false;
         }
 
     }
