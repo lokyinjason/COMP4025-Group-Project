@@ -6,4 +6,5 @@
 4. In projects, select Open -> add project from disk, then use the pulled path. (Select the whole folder, not go inside the folder)
 
 See: https://docs.google.com/document/d/1WeYO9hnedM6nzJQKMOQM4QcLPaCoEt9gzlQmRdsOxa8/edit#
-Build: https://lifehkbueduhk-my.sharepoint.com/:f:/g/personal/20203802_life_hkbu_edu_hk/Eq8uEik7avJAr7gH3MZ91z8B6Mi5Rtxt70v2uxarQGbT7w?e=gkIPBh
+
+Experience the game here (Build): https://lifehkbueduhk-my.sharepoint.com/:f:/g/personal/20203802_life_hkbu_edu_hk/Eq8uEik7avJAr7gH3MZ91z8B6Mi5Rtxt70v2uxarQGbT7w?e=gkIPBh
