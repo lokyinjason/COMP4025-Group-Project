@@ -20,6 +20,7 @@ public class DoorsWithLock : MonoBehaviour
     public bool firstLock;
     public bool firstOpen;
     [SerializeField] ObjectivesContent obj;
+    public string doorName;
 
 
     void Start()
@@ -79,7 +80,7 @@ public class DoorsWithLock : MonoBehaviour
             lockedSound.Play();
             if (firstLock)
             {
-                obj.setContent("Find the key to open the door. ");
+                obj.setContent("Find the key to open the " + doorName + " door. ");
             }
             firstLock = false;
         }
@@ -98,7 +99,7 @@ public class DoorsWithLock : MonoBehaviour
             if (firstOpen)
             {
                 obj.removeContent("Use the key to unlock something. ");
-                obj.removeContent("Find the key to open the door. ");
+                obj.removeContent("Find the key to open the " + doorName + " door. ");
             }
             firstOpen = false;
         }

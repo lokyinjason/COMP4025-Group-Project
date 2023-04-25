@@ -33,7 +33,7 @@ public class ObjectivesContent : MonoBehaviour
 
     public void removeContent(string oldText)
     {
-        foreach (string obj in objList)
+        foreach (string obj in objList.ToArray())
         {
             if (string.Equals(obj,oldText))
             {
