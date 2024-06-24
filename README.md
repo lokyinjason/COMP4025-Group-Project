@@ -1,4 +1,4 @@
-# COMP4025-Group-Project
+# COMP4025-Project
  
 1. Pull with git repo managers (eg. git-desktop, fork).
 2. Use Unity Hub.
